@@ -10,13 +10,16 @@ const UserForm = ({ className, loading, setUsers }) => {
   );
 
   const onNameChange = (e) => setName(e.target.value);
+
   const onEmailChange = (e) => setEmail(e.target.value);
+
   const submitHandler = (e) => {
     e.preventDefault();
     setUsers((users) => [...users, { id: Date.now(), name, email }]);
     setName("");
     setEmail("");
   };
+
   return (
     <form className={className} onSubmit={submitHandler}>
       <h2>Add a user:</h2>

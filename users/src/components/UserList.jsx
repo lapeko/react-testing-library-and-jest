@@ -1,5 +1,6 @@
 const UserList = ({ users, loading }) => {
   if (loading) return <h2>Loading...</h2>;
+
   return (
     <table className="table">
       <thead>
