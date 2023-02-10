@@ -9,6 +9,6 @@ describe("UserForm component", () => {
     const submit = getByRole("button", { name: "Submit" });
 
     expect(inputs).toHaveLength(2);
-    expect(submit).toBeInTheDocument();
+    expect(submit).toBeDisabled();
   });
 });
