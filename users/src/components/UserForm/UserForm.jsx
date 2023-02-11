@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-const UserForm = ({ className, loading, setUsers }) => {
+const UserForm = ({ className, loading, addNewUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -15,7 +15,7 @@ const UserForm = ({ className, loading, setUsers }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setUsers((users) => [...users, { id: Date.now(), name, email }]);
+    addNewUser({ id: Date.now(), name, email });
     setName("");
     setEmail("");
   };
