@@ -14,16 +14,17 @@ describe("UserForm component", () => {
 
   it("should call addNewUser from props if user filled name + email and pressed submit", async () => {
     const addNewUser = jest.fn();
-    const { user, getByRole, getAllByRole } = setup(
+    const { user, getByRole, getByLabelText } = setup(
       <UserForm addNewUser={addNewUser} loading={false} />
     );
 
-    const [nameInput, emailInput] = getAllByRole("textbox");
+    const nameLabel = getByLabelText("Name");
+    const emailLabel = getByLabelText("Email");
     const submit = getByRole("button", { name: "Submit" });
 
-    await user.click(nameInput);
+    await user.click(nameLabel);
     await user.keyboard("First name");
-    await user.click(emailInput);
+    await user.click(emailLabel);
     await user.keyboard("test@mail.com");
     await user.click(submit);
 
