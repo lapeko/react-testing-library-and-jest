@@ -12,7 +12,7 @@ describe("UserForm component", () => {
     expect(submit).toBeDisabled();
   });
 
-  it("should call addNewUser from props if user filled name + email and pressed submit", async () => {
+  it("should call addNewUser from props and clean form if user filled name + email and pressed submit", async () => {
     const addNewUser = jest.fn();
     const { user, getByRole, getByLabelText } = setup(
       <UserForm addNewUser={addNewUser} loading={false} />
@@ -33,5 +33,11 @@ describe("UserForm component", () => {
       name: "First name",
       email: "test@mail.com",
     });
+
+    const nameInput = getByRole("textbox", { name: "Name" });
+    const emailInput = getByRole("textbox", { name: "Email" });
+
+    expect(nameInput).toBeEmptyDOMElement();
+    expect(emailInput).toBeEmptyDOMElement();
   });
 });
