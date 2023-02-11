@@ -10,7 +10,7 @@ const UserList = ({ users, loading }) => {
           <th scope="col">Email</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody data-testid="users">
         {users.map((user, index) => (
           <tr key={user.id}>
             <th scope="row">{index + 1}</th>
