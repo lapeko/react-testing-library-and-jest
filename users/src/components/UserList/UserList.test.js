@@ -10,4 +10,17 @@ describe("UserList component", () => {
     const rowsWithUser = within(getByTestId("users")).getAllByRole("row");
     expect(rowsWithUser).toHaveLength(1);
   });
+
+  it("should render name and email of every user received from props", () => {
+    const users = [
+      { id: 1, name: "Name 1", email: "email1@qwe.qw" },
+      { id: 2, name: "Name 2", email: "email2@qwe.qw" },
+    ];
+    const { getByRole } = setup(<UserList users={users} loading={false} />);
+
+    users.forEach(({ name, email }) => {
+      expect(getByRole("cell", { name })).toBeInTheDocument();
+      expect(getByRole("cell", { name: email })).toBeInTheDocument();
+    });
+  });
 });
